@@ -218,6 +218,7 @@ if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
 	cd
 	echo '---instlling tornado -----'
 	nohup sh -c "\
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install hurry.filesize && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install tornado && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install reportlab && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install BeautifulSoup==3.2.1 && \	
@@ -376,7 +377,7 @@ cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
 git clone  https://elasa:ss123456@gitlab.com/elasa/ieee2.git
 mv i*/al*/* .
 
-
+mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www
 nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15001' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado1.log /dev/null 2>&1 &
 nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15002' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado2.log /dev/null 2>&1 &
 nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15003' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado3.log /dev/null 2>&1 &
