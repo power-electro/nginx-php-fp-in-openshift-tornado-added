@@ -158,7 +158,7 @@ fi
 echo "Cleanup"
 	cd $OPENSHIFT_TMP_DIR
 	rm -rf *
-PYTHON_CURRENT=`${OPENSHIFT_RUNTIME_DIR}/srv/python/bin/python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))'`
+#PYTHON_CURRENT=`${OPENSHIFT_RUNTIME_DIR}/srv/python/bin/python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))'`
 
 #checked
 #if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
