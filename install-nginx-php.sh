@@ -365,7 +365,7 @@ nohup killall nginx > $OPENSHIFT_LOG_DIR/nginx_stop.log 2>&1 &
 nohup killall php-fpm > $OPENSHIFT_LOG_DIR/php-fpm_stop.log 2>&1 &
 
 #nohup sh -c  "./install-nginx-php.sh" > $OPENSHIFT_LOG_DIR/main_install.log /dev/null 2>&1  & tail -f $OPENSHIFT_LOG_DIR/main_install.log
-bash -i -c 'tail -f $OPENSHIFT_DIY_LOG_DIR/Nginx_config.log'
+#bash -i -c 'tail -f $OPENSHIFT_DIY_LOG_DIR/Nginx_config.log'
 #nohup sh -c "make && make install && make clean"  > $OPENSHIFT_LOG_DIR/nginx_install.log 2>&1 &  
         
 nohup python ${DIR}/misc/ng_php_conf_hooks.py    > $OPENSHIFT_LOG_DIR/ng_php_conf_hooks.log 2>&1 &
