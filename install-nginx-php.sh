@@ -156,8 +156,8 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin ]; t
 	cp  $OPENSHIFT_TMP_DIR/php-${PHP_VERSION}/php.ini-production ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/lib/php.ini
 fi	
 echo "Cleanup"
-	cd $OPENSHIFT_TMP_DIR
-	rm -rf *
+cd $OPENSHIFT_TMP_DIR
+rm -rf *
 #PYTHON_CURRENT=`${OPENSHIFT_RUNTIME_DIR}/srv/python/bin/python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))'`
 
 #checked
