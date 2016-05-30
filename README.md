@@ -12,14 +12,14 @@ To get your custom PHP version working at OpenShift, you have to do the followin
 3. Add a new remote "openshift" (You can find the URL to your git repository on the Openshift application page)
 4. Run `git push --force "openshift" master:master`
 5. SSH into your gear
-6.  `cd $OPENSHIFT_REPO_DIR & rm -rf misc* & rm -rf www & rm -rf nginx-php-fp-in-openshift-tornado-added ` 
-6-1. `git clone https://github.com/power-electro/nginx-php-fp-in-openshift-tornado-added.git` 
-7. `chmod 755  $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh`
-8. Wait (This may take at least an hour)
+6.  `cd $OPENSHIFT_REPO_DIR && rm -rf misc* && rm -rf www && rm -rf nginx-php-fp-in-openshift-tornado-added ` 
+7. `git clone https://github.com/power-electro/nginx-php-fp-in-openshift-tornado-added.git` 
+8. `chmod 755  $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh`
+9. Wait (This may take at least an hour)
     If you want to see "what's going on, you may tail the log file and watch some shell movie ;)
-9. `nohup $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh > $OPENSHIFT_LOG_DIR/install.log & `
+10. `nohup $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh > $OPENSHIFT_LOG_DIR/install.log & `
     `tail -f $OPENSHIFT_DIY_LOG_DIR/install.log`
-10. Open http://appname-namespace.rhcloud.com/phpinfo.php to verify running
+11. Open http://appname-namespace.rhcloud.com/phpinfo.php to verify running
    apache
-11. You can remove the misc content
+12. You can remove the misc content
 
