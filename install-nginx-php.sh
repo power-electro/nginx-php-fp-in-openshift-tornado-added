@@ -346,14 +346,6 @@ nohup sh -c " wget http://projects.unbit.it/downloads/uwsgi-latest.tar.gz &	tar 
 rm -rf $OPENSHIFT_TMP_DIR/*
 
 	
-if [[ `lsof -n -P | grep 8080` ]];then
-	kill -9 `lsof -t -i :8080`
-	lsof -n -P | grep 8080
-fi
-if [[ `lsof -n -P | grep 9000` ]];then
-	kill -9 `lsof -t -i :9000`
-	lsof -n -P | grep 9000
-fi	
 #---starting nginx ----
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf.default > $OPENSHIFT_LOG_DIR/nginx_run.log 2>&1 & 
 #tail -f $OPENSHIFT_LOG_DIR/nginx_run.log
