@@ -336,10 +336,10 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 fi
 
 # echo 'Make uwsgi '
-	cd $OPENSHIFT_TMP_DIR
-    if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python ]; then
-      mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python
-    fi
+cd $OPENSHIFT_TMP_DIR
+if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python ]; then
+    mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python
+fi
 	
 nohup sh -c " wget http://projects.unbit.it/downloads/uwsgi-latest.tar.gz &	tar zxvf uwsgi-latest.tar.gz & cd uwsgi-2.0.7"  > $OPENSHIFT_LOG_DIR/uwsgi_install.log 2>&1 &
 
@@ -347,14 +347,14 @@ rm -rf $OPENSHIFT_TMP_DIR/*
 
 	
 #---starting nginx ----
-nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf.default > $OPENSHIFT_LOG_DIR/nginx_run.log 2>&1 & 
+nohup sh -c "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf.default " > $OPENSHIFT_LOG_DIR/nginx_run.log 2>&1 & 
 #tail -f $OPENSHIFT_LOG_DIR/nginx_run.log
 #nohup sh -c"${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/etc/php-fpm.conf"  > $OPENSHIFT_LOG_DIR/php_run.log 2>&1 & tail -f $OPENSHIFT_LOG_DIR/php_run.log
-nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm >  $OPENSHIFT_LOG_DIR/php_run.log 2>&1 &
+nohup sh -c "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm" >  $OPENSHIFT_LOG_DIR/php_run.log 2>&1 &
 #tail -f $OPENSHIFT_LOG_DIR/php_run.log
 #---stoping nginx ----
-nohup killall nginx > $OPENSHIFT_LOG_DIR/nginx_stop.log 2>&1 &
-nohup killall php-fpm > $OPENSHIFT_LOG_DIR/php-fpm_stop.log 2>&1 &
+nohup sh -c "killall nginx " > $OPENSHIFT_LOG_DIR/nginx_stop.log 2>&1 &
+nohup sh -c "killall php-fpm "> $OPENSHIFT_LOG_DIR/php-fpm_stop.log 2>&1 &
 
 #nohup sh -c  "./install-nginx-php.sh" > $OPENSHIFT_LOG_DIR/main_install.log /dev/null 2>&1  & tail -f $OPENSHIFT_LOG_DIR/main_install.log
 #bash -i -c 'tail -f $OPENSHIFT_DIY_LOG_DIR/Nginx_config.log'
