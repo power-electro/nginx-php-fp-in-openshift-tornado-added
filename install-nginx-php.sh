@@ -171,7 +171,7 @@ if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
     fi
 	wget http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.bz2
 	tar jxf Python-${PYTHON_VERSION}.tar.bz2
-	rm -rf Python-${PYTHON_VERSION}.tar.bz2
+	#rm -rf Python-${PYTHON_VERSION}.tar.bz2
 	cd Python-${PYTHON_VERSION}
 	
 	#./configure --prefix=$OPENSHIFT_DATA_DIR

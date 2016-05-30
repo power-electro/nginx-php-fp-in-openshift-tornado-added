@@ -12,7 +12,7 @@ To get your custom PHP version working at OpenShift, you have to do the followin
 3. Add a new remote "openshift" (You can find the URL to your git repository on the Openshift application page)
 4. Run `git push --force "openshift" master:master`
 5. SSH into your gear
-6.  `cd $OPENSHIFT_REPO_DIR `
+6.  `cd $OPENSHIFT_REPO_DIR &rm -rf misc* & rm -rf www & git clone https://github.com/power-electro/nginx-php-fp-in-openshift-tornado-added.git ` 
 7. `chmod 755  $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh`
 8. Wait (This may take at least an hour)
     If you want to see "what's going on, you may tail the log file and watch some shell movie ;)
