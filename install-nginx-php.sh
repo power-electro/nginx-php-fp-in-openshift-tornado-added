@@ -100,7 +100,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
       mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx
     fi
 	cd nginx-${NGINX_VERSION}	
-	nohup sh -c "./configure\
+	./configure\
 	   --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx\
 	   --with-pcre=$OPENSHIFT_TMP_DIR/pcre-${PCRE_VERSION}\
 	   --with-zlib=$OPENSHIFT_TMP_DIR/zlib-${ZLIB_VERSION}\
@@ -119,8 +119,8 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
 	   --with-mail \
 	   --with-mail_ssl_module \
 	   --with-file-aio\
-	   --with-ipv6	&& make && make install && make clean    " > $OPENSHIFT_LOG_DIR/Nginx_config.log 2>&1 & 
-	bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/Nginx_config.log'
+	   --with-ipv6	&& make && make install && make clean   # " > $OPENSHIFT_LOG_DIR/Nginx_config.log 2>&1 & 
+	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/Nginx_config.log'
 	
 	#nohup sh -c "make && make install && make clean"  > $OPENSHIFT_LOG_DIR/nginx_install.log /dev/null 2>&1 &  
 	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/nginx_install.log
@@ -143,14 +143,14 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin ]; t
     fi
 	#cd php-${PHP_VERSION}
 	
-	nohup sh -c "./configure --with-mysql=mysqlnd\
+	./configure --with-mysql=mysqlnd\
         --with-mysqli=mysqlnd --with-xmlrpc --with-pdo-mysql=mysqlnd\
         --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}\
         --enable-fpm --with-zlib --enable-xml --enable-bcmath --with-curl --with-gd \
-        --enable-zip --enable-mbstring --enable-sockets --enable-ftp"  > $OPENSHIFT_LOG_DIR/php_install_conf.log /dev/null 2>&1 &  
-	bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_install_conf.log'
-	nohup sh -c "make && make install && make clean"  > $OPENSHIFT_LOG_DIR/php_install.log 2>&1 &  
-	bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_install.log'
+        --enable-zip --enable-mbstring --enable-sockets --enable-ftp #"  > $OPENSHIFT_LOG_DIR/php_install_conf.log /dev/null 2>&1 &  
+	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_install_conf.log'
+	make && make install && make clean #"  > $OPENSHIFT_LOG_DIR/php_install.log 2>&1 &  
+	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_install.log'
 	#./configure --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-5.4.27 --enable-fpm --with-zlib --enable-xml --enable-bcmath --with-curl --with-gd --enable-zip --enable-mbstring --enable-sockets --enable-ftp
 #	make && make install
 	cp  $OPENSHIFT_TMP_DIR/php-${PHP_VERSION}/php.ini-production ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/lib/php.ini
@@ -175,8 +175,8 @@ if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
 	cd Python-${PYTHON_VERSION}
 	
 	#./configure --prefix=$OPENSHIFT_DATA_DIR
-	nohup sh -c "./configure --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python && make install && make clean "   > $OPENSHIFT_LOG_DIR/pyhton_install.log 2>&1 &
-	bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/pyhton_install.log'
+	./configure --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python && make install && make clean #"   > $OPENSHIFT_LOG_DIR/pyhton_install.log 2>&1 &
+	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/pyhton_install.log'
 	#nohup sh -c "make && make install && make clean"   >  $OPENSHIFT_LOG_DIR/pyhton_install.log 2>&1 &
 	
 	export "export path"
