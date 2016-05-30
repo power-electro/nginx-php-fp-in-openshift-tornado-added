@@ -339,9 +339,7 @@ fi
       mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python
     fi
 	
-	wget http://projects.unbit.it/downloads/uwsgi-latest.tar.gz
-	tar zxvf uwsgi-latest.tar.gz
-	cd uwsgi-2.0.7
+nohup sh -c " wget http://projects.unbit.it/downloads/uwsgi-latest.tar.gz &	tar zxvf uwsgi-latest.tar.gz & cd uwsgi-2.0.7"  > $OPENSHIFT_LOG_DIR/uwsgi_install.log 2>&1 &
 
 rm -rf $OPENSHIFT_TMP_DIR/*
 
