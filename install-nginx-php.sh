@@ -371,5 +371,21 @@ bash -i -c 'tail -f $OPENSHIFT_DIY_LOG_DIR/Nginx_config.log'
 nohup python ${DIR}/misc/ng_php_conf_hooks.py    > $OPENSHIFT_LOG_DIR/ng_php_conf_hooks.log 2>&1 &
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf > $OPENSHIFT_LOG_DIR/nginx_run.log 2>&1 &  bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/nginx_run.log'
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm  > $OPENSHIFT_LOG_DIR/php_run.log 2>&1 & bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_run.log'
+
+
+mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
+git clone  https://elasa:ss123456@gitlab.com/elasa/ieee2.git
+mv i*/al*/* .
+
+
+nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15001' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado1.log /dev/null 2>&1 &
+nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15002' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado2.log /dev/null 2>&1 &
+nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15003' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado3.log /dev/null 2>&1 &
+
+nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf " > ${OPENSHIFT_LOG_DIR}/server-template.log 2>&1 &
+	
+
 #nohup sh -c  "./install-nginx-php.sh" > $OPENSHIFT_LOG_DIR/main_install.log 2>&1 &
 #bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/main_install.log'
+
