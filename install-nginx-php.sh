@@ -360,7 +360,7 @@ nohup sh -c "killall php-fpm "> $OPENSHIFT_LOG_DIR/php-fpm_stop.log 2>&1 &
 #bash -i -c 'tail -f $OPENSHIFT_DIY_LOG_DIR/Nginx_config.log'
 #nohup sh -c "make && make install && make clean"  > $OPENSHIFT_LOG_DIR/nginx_install.log 2>&1 &  
         
-nohup python ${DIR}/misc/ng_php_conf_hooks.py    > $OPENSHIFT_LOG_DIR/ng_php_conf_hooks.log 2>&1 &
+nohup python ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/misc/ng_php_conf_hooks.py    > $OPENSHIFT_LOG_DIR/ng_php_conf_hooks.log 2>&1 &
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/conf/nginx.conf > $OPENSHIFT_LOG_DIR/nginx_run.log 2>&1 & 
 #bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/nginx_run.log'
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm  > $OPENSHIFT_LOG_DIR/php_run.log 2>&1 & 

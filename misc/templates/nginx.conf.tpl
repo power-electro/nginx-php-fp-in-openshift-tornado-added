@@ -72,7 +72,7 @@ http {
 
         #access_log  logs/host.access.log  main;
 
-        location / {
+        location /main {
             root   {{OPENSHIFT_REPO_DIR}};
             index  index.html index.htm;
 			try_files $uri $uri/ =404;
