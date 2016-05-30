@@ -161,7 +161,8 @@ echo "Cleanup"
 PYTHON_CURRENT=`${OPENSHIFT_RUNTIME_DIR}/srv/python/bin/python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))'`
 
 #checked
-if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
+#if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
+if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	cd $OPENSHIFT_TMP_DIR
     if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv ]; then
 	   mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
@@ -373,6 +374,7 @@ nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm 
 
 
 mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
+rm  -rf ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/*
 cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
 git clone  https://elasa:ss123456@gitlab.com/elasa/ieee2.git
 mv i*/al*/* .
