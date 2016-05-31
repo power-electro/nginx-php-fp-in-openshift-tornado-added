@@ -61,7 +61,7 @@ http {
 
     server {
         listen      {{OPENSHIFT_INTERNAL_IP}}:{{OPENSHIFT_INTERNAL_PORT}};
-        server_name  {{OPENSHIFT_GEAR_DNS}} {{www.OPENSHIFT_GEAR_DNS}};
+        server_name  {{OPENSHIFT_GEAR_DNS}} www.{{OPENSHIFT_GEAR_DNS}};
 		root {{OPENSHIFT_REPO_DIR}};
 
 
