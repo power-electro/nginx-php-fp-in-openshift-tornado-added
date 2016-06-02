@@ -219,6 +219,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	cd
 	echo '---instlling tornado -----'
 	nohup sh -c "\
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install httplib2 && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install hurry.filesize && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install tornado && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install reportlab && \
@@ -372,6 +373,27 @@ cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3
 git clone  https://elasa:ss123456@gitlab.com/elasa/ieee2.git
 mv i*/al*/* .
 
+
+## Adding DNS in Free-papers.elasa.ir  site list ######
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo
+rm -rf ${OPENSHIFT_HOMEDIR}app-root/runtime/repo/free-papers_elasa_ir_site-list
+git clone https://github.com/power-electro/free-papers_elasa_ir_site-list.git
+#$File="${OPENSHIFT_HOMEDIR}app-root/runtime/repo/free-papers_elasa_ir_site-list/openshift_freepapers_site_list.txt"
+cd ${OPENSHIFT_HOMEDIR}app-root/runtime/repo/free-papers_elasa_ir_site-list/
+#if grep -q $OPENSHIFT_GEAR_DNS "$File"; then
+if grep -q $OPENSHIFT_GEAR_DNS "openshift_freepapers_site_list.txt"; then
+ echo $OPENSHIFT_GEAR_DNS "is in file"
+else  
+  echo $OPENSHIFT_GEAR_DNS >> openshift_freepapers_site_list.txt
+  echo $OPENSHIFT_GEAR_DNS "added in file"
+  git commit -a  -m "$OPENSHIFT_GEAR_DNS added" 
+  git config remote.origin.url https://soheilpaper:ss123456@github.com/power-electro/free-papers_elasa_ir_site-list.git
+  #git remote add origin https://soheilpaper:ss123456@github.com/power-electro/free-papers_elasa_ir_site-list.git
+  git push -u origin master
+fi
+
+
+ 
 mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www
 nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15001' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado1.log /dev/null 2>&1 &
 nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15002' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado2.log /dev/null 2>&1 &
