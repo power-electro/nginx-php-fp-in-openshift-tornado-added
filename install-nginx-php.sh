@@ -237,7 +237,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install google && \	
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install selenium && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install twill==0.9.1 && \
-	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/pip  install lxml==3.2.3 && \
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install lxml==3.2.3 && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install cssselect==0.9.1 && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install django-screamshot && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install img2pdf && \
@@ -249,6 +249,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	#tail -f  $OPENSHIFT_LOG_DIR/python_modules_install_1.log
 	#install pdf logo removal (pdfparanoia)
 	
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install   lxml==3.2.3 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install uwsgi 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install ipgetter 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install cookielib
