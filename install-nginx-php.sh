@@ -324,9 +324,10 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	
 	
 	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/gmp
+	cd $OPENSHIFT_TMP_DIR
 	wget https://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.bz2
 	tar -xvjpf gmp-6.0.0a.tar.bz2
-	cd gmp-6.0.0a
+	cd gmp-6.0.0*
 	nohup sh -c "./configure --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/gmp && make && make check  &&make install && make clean "   > $OPENSHIFT_LOG_DIR/gmp_install.log 2>&1 &
 	#tail -f $OPENSHIFT_LOG_DIR/gmp_install.log
 	
