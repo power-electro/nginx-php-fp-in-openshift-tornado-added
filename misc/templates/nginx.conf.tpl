@@ -50,8 +50,8 @@ http {
 	upstream index {
         
 		server {{OPENSHIFT_INTERNAL_IP}}:15001 weight=1;
-		server {{OPENSHIFT_INTERNAL_IP}}:15002 weight=2;
-		server {{OPENSHIFT_INTERNAL_IP}}:15003 weight=3;
+		server {{OPENSHIFT_INTERNAL_IP}}:15002 weight=1;
+		server {{OPENSHIFT_INTERNAL_IP}}:15003 weight=1;
 		
     }
 	upstream comment {
