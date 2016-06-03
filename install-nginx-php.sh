@@ -220,7 +220,8 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	
 	cd
 	echo '---instlling tornado -----'
-	nohup sh -c "\
+	#nohup sh -c "\
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install robobrowser
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install httplib2 && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install hurry.filesize && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install tornado && \
@@ -245,11 +246,11 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install pdfparanoia && \
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install youtube-dl && \	
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install requesocks==0.10.8 && \	
-	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install requests==2.4.1"> $OPENSHIFT_LOG_DIR/python_modules_install_1.log /dev/null 2>&1 &  
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install requests==2.4.1 #"> $OPENSHIFT_LOG_DIR/python_modules_install_1.log /dev/null 2>&1 &  
 	#tail -f  $OPENSHIFT_LOG_DIR/python_modules_install_1.log
 	#install pdf logo removal (pdfparanoia)
 	
-	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install   lxml==3.2.3 
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install lxml==3.2.3 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install uwsgi 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install ipgetter 
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install cookielib
