@@ -164,12 +164,14 @@ rm -rf *
 #if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
 if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	cd $OPENSHIFT_TMP_DIR
+	
     if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv ]; then
 	   mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv
     fi
 	if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python ]; then
 	   mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python
     fi
+	rm Python-${PYTHON_VERSION}.tar.bz2
 	wget http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.bz2
 	tar jxf Python-${PYTHON_VERSION}.tar.bz2
 	#rm -rf Python-${PYTHON_VERSION}.tar.bz2
@@ -299,7 +301,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	#${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install 
 	
 	#install PyQt
-	
+	cd $OPENSHIFT_TMP_DIR
 	wget http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.9.6/PyQt-mac-gpl-4.9.6.tar.gz
 	tar xzvf PyQt-mac-gpl-4.9.6.tar.gz
 	cd PyQt-mac-gpl-4.9.6
