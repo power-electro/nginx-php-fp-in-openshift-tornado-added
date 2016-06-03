@@ -49,7 +49,7 @@ fi
 # Start tornado if present
 if [ -d "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin" ]; then
 	nohup sh -c 'export PATH=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin:$PATH' > $OPENSHIFT_LOG_DIR/path_export2.log /dev/null 2>&1 & 
-	export $PATH & tail -f $OPENSHIFT_LOG_DIR/path_export2.log
+	#export $PATH & tail -f $OPENSHIFT_LOG_DIR/path_export2.log
 
 	nohup sh -c "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15001'" > ${OPENSHIFT_LOG_DIR}/tornado1.log /dev/null 2>&1 &
 	
