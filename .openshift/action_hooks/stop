@@ -17,7 +17,7 @@ kill `ps -ef | grep nginx | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 kill `ps -ef | grep phantomjs | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 kill `ps -ef | grep python | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 
-${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx
+#${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx
 
 echo "Stopping nginx."
 if [ -f ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/logs/nginx.pid ];then
