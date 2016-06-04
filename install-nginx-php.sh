@@ -404,6 +404,28 @@ nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin/nginx -c  ${OPENSHIFT
 nohup ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin/php-fpm  > $OPENSHIFT_LOG_DIR/php_run.log 2>&1 & 
 #bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/php_run.log'
 
+#rm -rf ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/*
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/cron
+chmod 755 -R .
+
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron
+cp ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/cron/daily/cron  ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/daily/cron
+cp  -rf ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/cron/. ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/
+#cp  -rf ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/cron/daily/cron  ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/daily/cron
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron
+chmod 755 -R ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/daily/cron
+mkdir daily 
+mkdir hourly 
+mkdir minutely 
+mkdir monthly 
+mkdir weekly
+chmod 755 -R .
+echo "ls from dial cron folder"
+cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/daily && ls
+
+cd $OPENSHIFT_TMP_DIR
+
+
 cp ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/action_hooks/stop ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/action_hooks/stop
 cp ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/.openshift/action_hooks/start ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/action_hooks/start
 chmod 755 ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/action_hooks/start
