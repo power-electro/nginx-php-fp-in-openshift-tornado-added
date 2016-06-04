@@ -1,0 +1,4 @@
+cd $OPENSHIFT_REPO_DIR && rm -rf misc* && rm -rf www && rm -rf nginx-php-fp-in-openshift-tornado-added 
+git clone https://github.com/power-electro/nginx-php-fp-in-openshift-tornado-added.git 
+chmod 755 $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added/install-nginx-php.sh 
+cd $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added && ./install-nginx-php.sh
