@@ -350,11 +350,11 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	#unzip google_appengine_1.9.13.zip
 	#cd google_appengine
 	
-	nohup sh -c "/
-	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google-app-sdk && \
-	mv google_appengine ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google_appengine && \
-	export PATH=$PATH:${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google_appengine && \
-	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/pip install appengine"> $OPENSHIFT_LOG_DIR/python_modules_install_6.log /dev/null 2>&1 &  
+	#nohup sh -c "/
+	#mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google-app-sdk && \
+	#mv google_appengine ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google_appengine && \
+	#export PATH=$PATH:${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/google_appengine && \
+	#${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/pip install appengine"> $OPENSHIFT_LOG_DIR/python_modules_install_6.log /dev/null 2>&1 &  
 	
 	
 	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/gmp
