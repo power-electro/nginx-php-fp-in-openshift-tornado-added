@@ -48,11 +48,12 @@ http {
 		
     }
 	upstream index {
-        
+        fair;
 		server {{OPENSHIFT_INTERNAL_IP}}:15001 weight=1;
 		server {{OPENSHIFT_INTERNAL_IP}}:15002 weight=1;
 		server {{OPENSHIFT_INTERNAL_IP}}:15003 weight=1;
 		keepalive 3;
+		
     }
 	upstream comment {
 		server vb2-fishsmarkets.rhcloud.com;
