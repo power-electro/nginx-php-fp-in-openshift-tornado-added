@@ -87,7 +87,7 @@ rm -rf $OPENSHIFT_TMP_DIR/*
 
 if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then	
 	cd $OPENSHIFT_TMP_DIR
-	git clone https://github.com/cep21/healthcheck_nginx_upstreams.git
+	#git clone https://github.com/cep21/healthcheck_nginx_upstreams.git
 	
 	wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 	tar zxf nginx-${NGINX_VERSION}.tar.gz
@@ -107,7 +107,6 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
 	   --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx\
 	   --with-pcre=$OPENSHIFT_TMP_DIR/pcre-${PCRE_VERSION}\
 	   --with-zlib=$OPENSHIFT_TMP_DIR/zlib-${ZLIB_VERSION}\
-	   --add-module=$OPENSHIFT_TMP_DIR/healthcheck_nginx_upstreams\
 	   --with-http_ssl_module\
 	   --with-http_realip_module \
 	   --with-http_addition_module \
@@ -123,7 +122,9 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
 	   --with-mail \
 	   --with-mail_ssl_module \
 	   --with-file-aio\
-	   --with-ipv6	&& make && make install && make clean   # " > $OPENSHIFT_LOG_DIR/Nginx_config.log 2>&1 & 
+	   --with-ipv6
+	   #--add-module=$OPENSHIFT_TMP_DIR/healthcheck_nginx_upstreams\
+	   make && make install && make clean   # " > $OPENSHIFT_LOG_DIR/Nginx_config.log 2>&1 & 
 	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/Nginx_config.log'
 	
 	#nohup sh -c "make && make install && make clean"  > $OPENSHIFT_LOG_DIR/nginx_install.log /dev/null 2>&1 &  
