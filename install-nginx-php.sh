@@ -89,7 +89,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
 	cd $OPENSHIFT_TMP_DIR
 	wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 	tar zxf nginx-${NGINX_VERSION}.tar.gz
-	rm zxf nginx-${NGINX_VERSION}.tar.gz
+	rm  nginx-${NGINX_VERSION}.tar.gz
 	wget http://ftp.cs.stanford.edu/pub/exim/pcre/pcre-${PCRE_VERSION}.tar.gz
 	#wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz
 	tar zxf pcre-${PCRE_VERSION}.tar.gz
