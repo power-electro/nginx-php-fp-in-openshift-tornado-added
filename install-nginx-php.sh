@@ -392,6 +392,17 @@ fi
 	
 nohup sh -c " wget http://projects.unbit.it/downloads/uwsgi-latest.tar.gz &	tar zxvf uwsgi-latest.tar.gz & cd uwsgi-2.0.7"  > $OPENSHIFT_LOG_DIR/uwsgi_install.log 2>&1 &
 
+
+
+if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/cpdf ]; then
+	echo "installing cpdf"
+	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/cpdf
+	cd  ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/cpdf
+	git clone https://github.com/coherentgraphics/cpdf-binaries.git
+	mv cpdf-binaries/Linux-Intel-64bit/* .
+	rm -rf cpdf-binaries
+fi
+
 rm -rf $OPENSHIFT_TMP_DIR/*
 
 	
@@ -469,7 +480,7 @@ if [ -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	fi
 
 
- 
+	#${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/save_source.py
 	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www
 	nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15001' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado1.log /dev/null 2>&1 &
 	nohup sh -c " ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/tornado-get.py  --port '15002' --root '${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/www' --wtdir '/static'" > ${OPENSHIFT_LOG_DIR}/tornado2.log /dev/null 2>&1 &
