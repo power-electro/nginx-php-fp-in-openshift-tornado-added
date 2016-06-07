@@ -3,7 +3,8 @@
 PYTHON_VERSION="2.7.4"
 PCRE_VERSION="8.35"
 #NGINX_VERSION="1.6.0"
-NGINX_VERSION="1.10.1"
+#NGINX_VERSION="1.10.1"
+NGINX_VERSION="1.9.2"
 MEMCACHED_VERSION="1.4.15"
 ZLIB_VERSION="1.2.8"
 #PHP_VERSION="5.5.9"
@@ -87,9 +88,8 @@ rm -rf $OPENSHIFT_TMP_DIR/*
 
 if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then	
 	cd $OPENSHIFT_TMP_DIR
-	#git clone https://github.com/cep21/healthcheck_nginx_upstreams.git
-	git clone https://github.com/gnosek/nginx-upstream-fair.git
 	
+
 	wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 	tar zxf nginx-${NGINX_VERSION}.tar.gz
 	rm  nginx-${NGINX_VERSION}.tar.gz
@@ -103,7 +103,28 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
     if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx ]; then
       mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx
     fi
-	cd nginx-${NGINX_VERSION}	
+	
+	#git clone https://github.com/cep21/healthcheck_nginx_upstreams.git
+	cd nginx-${NGINX_VERSION}
+	#patch -p1 < $OPENSHIFT_TMP_DIR/healthcheck_nginx_upstreams/nginx.patch
+	
+	
+	cd $OPENSHIFT_TMP_DIR
+	#git clone https://github.com/yaoweibin/nginx_upstream_check_module.git #patched for newer version
+	git clone https://github.com/power-electro/nginx_upstream_check_module.git
+	cd nginx-${NGINX_VERSION}
+	#patch -p1 < $OPENSHIFT_TMP_DIR/nginx_upstream_check_module/check_1.9.2+.patch
+	
+	cd $OPENSHIFT_TMP_DIR
+	git clone https://github.com/gnosek/nginx-upstream-fair.git
+	cd nginx-upstream-fair
+	#patch -p2 < $OPENSHIFT_TMP_DIR/nginx_upstream_check_module/upstream_fair.patch
+	
+	cd $OPENSHIFT_TMP_DIR
+	
+	cd nginx-${NGINX_VERSION}
+	#
+	
 	./configure\
 	   --prefix=${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx\
 	   --with-pcre=$OPENSHIFT_TMP_DIR/pcre-${PCRE_VERSION}\
@@ -124,8 +145,8 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/nginx/sbin ]; then
 	   --with-mail_ssl_module \
 	   --with-file-aio\
 	   --with-ipv6\
-	   --add-module=$OPENSHIFT_TMP_DIR/nginx-upstream-fair
-	   #--add-module=$OPENSHIFT_TMP_DIR/healthcheck_nginx_upstreams\
+	   --add-module=$OPENSHIFT_TMP_DIR/nginx-upstream-fair\
+	   --add-module=$OPENSHIFT_TMP_DIR/nginx_upstream_check_module
 	   make && make install && make clean   # " > $OPENSHIFT_LOG_DIR/Nginx_config.log 2>&1 & 
 	#bash -i -c 'tail -f $OPENSHIFT_LOG_DIR/Nginx_config.log'
 	
