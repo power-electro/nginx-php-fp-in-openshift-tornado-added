@@ -159,7 +159,7 @@ fi
 
 echo "INSTALL PHP"
 #if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin ]; then
-if [ "1"="2" ]; then
+if [ ! "1"="1" ]; then
 	cd $OPENSHIFT_TMP_DIR
 	wget http://us1.php.net/distributions/php-${PHP_VERSION}.tar.gz
 	tar zxf php-${PHP_VERSION}.tar.gz
