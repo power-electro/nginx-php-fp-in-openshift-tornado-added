@@ -29,7 +29,8 @@ import com.gargoylesoftware.htmlunit.BrowserVersion as BrowserVersion
 
 
 def main():
-   webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
+   try:webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
+   except:webclient = WebClient() # creating a new webclient object.
    url = "http://www.gartner.com/it/products/mq/mq_ms.jsp"
    page = webclient.getPage(url) # getting the url
    articles = page.getByXPath("//table[@id='mqtable']//tr/td/a") # getting all the hyperlinks
