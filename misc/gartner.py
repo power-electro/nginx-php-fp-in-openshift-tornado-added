@@ -29,10 +29,21 @@ import com.gargoylesoftware.htmlunit.WebClient as WebClient
 
 import com.gargoylesoftware.htmlunit.BrowserVersion as BrowserVersion
 
-
+try:webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
+except:
+    webclient = WebClient() # creating a new webclient object.
+    try:
+        webclient.getOptions().setRedirectEnabled(True);
+        webclient.getOptions().setThrowExceptionOnScriptError(False);
+        webclient.getOptions().setCssEnabled(False);
+        webclient.getOptions().setUseInsecureSSL(True);
+        webclient.getOptions().setThrowExceptionOnFailingStatusCode(False);
+        webclient.getCookieManager().setCookiesEnabled(True);
+    except:
+        print "error in webcline options \n"
 def main():
-   try:webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
-   except:webclient = WebClient() # creating a new webclient object.
+   # try:webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
+   # except:webclient = WebClient() # creating a new webclient object.
    url = "http://www.gartner.com/it/products/mq/mq_ms.jsp"
    url = "http://google.com"
    page = webclient.getPage(url) # getting the url
@@ -53,7 +64,7 @@ def gotogoogle():
 
 
     """
-    webclient = WebClient() # creating a new webclient object.
+    # webclient = WebClient() # creating a new webclient object.
     print('hello, I will visit Google')
     url='http://google.com'
     page = webclient.getPage(url)
