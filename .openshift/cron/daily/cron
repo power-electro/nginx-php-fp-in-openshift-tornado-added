@@ -10,5 +10,5 @@ cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/static
 
 export CLASSPATH=$CLASSPATH:$OPENSHIFT_HOMEDIR/app-root/runtime/srv/htmlunit/lib/*
 	
-$OPENSHIFT_HOMEDIR/app-root/runtime/srv/jython/jython    $OPENSHIFT_HOMEDIR/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/misc/gartner.py  # -J-classpath "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/htmlunit/lib/*"
+$OPENSHIFT_HOMEDIR/app-root/runtime/srv/jython/bin/jython    $OPENSHIFT_HOMEDIR/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/misc/gartner.py  # -J-classpath "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/htmlunit/lib/*"
 		
