@@ -326,7 +326,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install dpath
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install pygoogle
 	
-	
+	: '
 	nohup sh -c "\	
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install uwsgi  && \	
 	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/easy_install cookielib"> $OPENSHIFT_LOG_DIR/python_modules_install_1_1.log /dev/null 2>&1 &  
@@ -401,7 +401,7 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	mkdir ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado
 	#wget balabal
 	#unzip bala
-	
+	'
 
 fi
 
