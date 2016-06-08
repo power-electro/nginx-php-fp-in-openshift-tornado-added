@@ -158,7 +158,8 @@ fi
 
 
 echo "INSTALL PHP"
-if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin ]; then
+#if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/php-${PHP_VERSION}/sbin ]; then
+if [ "1"="2" ]; then
 	cd $OPENSHIFT_TMP_DIR
 	wget http://us1.php.net/distributions/php-${PHP_VERSION}.tar.gz
 	tar zxf php-${PHP_VERSION}.tar.gz
@@ -216,6 +217,8 @@ if [ ! -d ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin ]; then
 	echo '--Install Setuptools--'
 
 	cd $OPENSHIFT_TMP_DIR
+	wget http://peak.telecommunity.com/dist/ez_setup.py
+	${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/python/bin/python ez_setup.py
 	
 	#installing easy_install
 	wget https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.6.tar.gz #md5=ee82ea53def4480191061997409d2996
