@@ -4,7 +4,7 @@ from time import sleep
 home=os.environ['OPENSHIFT_HOMEDIR']
 # jarpath = '/usr/share/java/htmlunit/' #path the jar files to import
 jarpath =home+ '/app-root/runtime/srv/htmlunit/lib' #path the jar files to import
-os.environ['CLASSPATH']=os.environ['CLASSPATH']+":"+home+'/app-root/runtime/srv/htmlunit/lib/'
+os.environ['CLASSPATH']=+home+'/app-root/runtime/srv/htmlunit/lib/'+':'+os.environ['CLASSPATH']
 jars = ['apache-mime4j-0.6.jar','commons-codec-1.4.jar',
     'commons-collections-3.2.1.jar','commons-io-1.4.jar',
     'commons-lang-2.4.jar','commons-logging-1.1.1.jar',
