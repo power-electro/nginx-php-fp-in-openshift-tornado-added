@@ -2,8 +2,8 @@ import sys, os
 from time import sleep
 home=os.environ['OPENSHIFT_HOMEDIR']
 # jarpath = '/usr/share/java/htmlunit/' #path the jar files to import
-jarpath =home+ '/app-root/runtime/srv/htmlunit/' #path the jar files to import
-
+jarpath =home+ '/app-root/runtime/srv/htmlunit/lib' #path the jar files to import
+os.environ['CLASSPATH']=os.environ['CLASSPATH']+":"+home+'/app-root/runtime/srv/htmlunit/lib/'
 jars = ['apache-mime4j-0.6.jar','commons-codec-1.4.jar',
     'commons-collections-3.2.1.jar','commons-io-1.4.jar',
     'commons-lang-2.4.jar','commons-logging-1.1.1.jar',
@@ -28,8 +28,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion as BrowserVersion
 
 
 def main():
-   #webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
-   webclient = WebClient()
+   webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
    url = "http://www.gartner.com/it/products/mq/mq_ms.jsp"
    page = webclient.getPage(url) # getting the url
    articles = page.getByXPath("//table[@id='mqtable']//tr/td/a") # getting all the hyperlinks
@@ -43,5 +42,14 @@ def main():
              print "Title:", title[0].asText()
 
              print "Summary:", summary[0].asText()
+
+def gotopage():
+	webclient = WebClient() # creating a new webclient object.
+    print('hello, I will visit Google')
+    url = 'http://google.com'
+    page = webclient.getPage(url)
+    print(page)    
+			 
 if __name__ == '__main__':
-        main()
+		gotopage()
+        #main()
