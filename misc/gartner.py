@@ -29,10 +29,16 @@ import com.gargoylesoftware.htmlunit.WebClient as WebClient
 
 import com.gargoylesoftware.htmlunit.BrowserVersion as BrowserVersion
 
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException
+import com.gargoylesoftware.htmlunit.html.HtmlPage
+import com.gargoylesoftware.htmlunit.ScriptException
+
+
 try:webclient = WebClient(BrowserVersion.FIREFOX_3_6) # creating a new webclient object.
 except:
     webclient = WebClient() # creating a new webclient object.
     try:
+        webclient.getOptions().setThrowExceptionOnScriptError(False)
         webclient.getOptions().setRedirectEnabled(True);
         webclient.getOptions().setThrowExceptionOnScriptError(False);
         webclient.getOptions().setCssEnabled(False);
