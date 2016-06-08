@@ -44,9 +44,9 @@ def main():
              print "Summary:", summary[0].asText()
 
 def gotopage():
-	webclient = WebClient() # creating a new webclient object.
+    webclient = WebClient() # creating a new webclient object.
     print('hello, I will visit Google')
-    url = 'http://google.com'
+    url='http://google.com'
     page = webclient.getPage(url)
     print(page)    
 			 
