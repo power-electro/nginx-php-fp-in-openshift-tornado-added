@@ -21,7 +21,7 @@ def loadjars(): #appends jars to jython path
         container = jarpath+jar
         sys.path.append(container)
 
-loadjars()
+# loadjars()
 
 import com.gargoylesoftware.htmlunit.WebClient as WebClient
 
@@ -57,3 +57,4 @@ def gotogoogle():
 
 if __name__ == '__main__':
     gotogoogle()
+    main()
