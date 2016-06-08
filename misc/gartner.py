@@ -44,7 +44,11 @@ def main():
 
              print "Summary:", summary[0].asText()
 
-def gotopage():
+def gotogoogle():
+    """
+
+
+    """
     webclient = WebClient() # creating a new webclient object.
     print('hello, I will visit Google')
     url='http://google.com'
@@ -52,5 +56,4 @@ def gotopage():
     print(page)    
 
 if __name__ == '__main__':
-        gotopage()
-        #main()
+    gotogoogle()
