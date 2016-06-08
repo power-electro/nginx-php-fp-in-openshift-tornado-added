@@ -1,3 +1,4 @@
+#!/opt/jython/jython
 import sys, os
 from time import sleep
 home=os.environ['OPENSHIFT_HOMEDIR']
