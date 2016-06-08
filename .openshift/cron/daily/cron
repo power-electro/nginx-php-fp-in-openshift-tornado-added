@@ -7,3 +7,5 @@ cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/d*
 cd $OPENSHIFT_REPO_DIR/nginx-php-fp-in-openshift-tornado-added && ./install-nginx-php.sh
 cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/repo/.openshift/cron/d*
 cd ${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/tornado3/static
+$OPENSHIFT_HOMEDIR/app-root/runtime/srv/jython/jython    $OPENSHIFT_HOMEDIR/app-root/runtime/repo/nginx-php-fp-in-openshift-tornado-added/misc/gartner.py  # -J-classpath "${OPENSHIFT_HOMEDIR}/app-root/runtime/srv/htmlunit/lib/*"
+		
