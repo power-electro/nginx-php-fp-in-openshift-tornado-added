@@ -49,7 +49,7 @@ def gotopage():
     url='http://google.com'
     page = webclient.getPage(url)
     print(page)    
-			 
+
 if __name__ == '__main__':
-		gotopage()
+        gotopage()
         #main()
